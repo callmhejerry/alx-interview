@@ -2,18 +2,20 @@
 
 '''
 A function that returns a list of lists
-of integers representing the Pascal’s triangle 
+of integers representing the Pascal’s triangle
 of n
 '''
+
 
 def pascal_triangle(n):
     '''
     return the pascal triangle for n
     '''
-    if (n <= 0):
-        return [];
-    
+    if n <= 0:
+        return []
+
     return calc(n)
+
 
 def calc(n, results=[]):
     '''
@@ -26,7 +28,7 @@ def calc(n, results=[]):
     new = []
     last = triangle[len(triangle) - 1]
     prev = 0
-    
+
     for i in last:
         new.append(i + prev)
         prev = i
