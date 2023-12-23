@@ -26,8 +26,8 @@ try:
 
         if matches:
             status_code = matches.group(1)
-
-            status_codes[status_code] = status_codes[status_code] + 1
+            if status_code in status_codes.keys():
+                status_codes[status_code] = status_codes[status_code] + 1
             file_size = file_size + int(matches.group(2))
 
             count = count + 1
@@ -38,10 +38,11 @@ try:
                 if (val > 0):
                     print("{}: {}".format(key, val))
             count = 0
-
 except KeyboardInterrupt:
+    pass
+finally:
     print("File size: {}".format(file_size))
-    for key, val in status_codes.items():
+    for key, val in sorted(status_codes.items()):
         if (val > 0):
             print("{}: {}".format(key, val))
     count = 0
