@@ -22,7 +22,7 @@ file_size = 0
 try:
     for user_input in sys.stdin:
         if (count == 10):
-            print("File Size: {}".format(file_size))
+            print("File size: {}".format(file_size))
             for key, val in status_codes.items():
                 if (val > 0):
                     print("{}: {}".format(key, val))
