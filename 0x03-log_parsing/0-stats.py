@@ -6,7 +6,7 @@ A script that reads stdin line by line and computes metrics
 import sys
 import re
 
-count = 1
+count = 0
 status_codes = {
     "200": 0,
     "301": 0,
