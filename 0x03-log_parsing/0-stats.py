@@ -21,14 +21,14 @@ file_size = 0
 
 try:
     for user_input in sys.stdin:
-        pattern = r'\b(\d{3})\s(\d+)\b'
-        matches = re.search(pattern, user_input)
+        tokens = user_input.split(" ")
+        matches = len(tokens) > 4
 
         if matches:
-            status_code = matches.group(1)
+            status_code = tokens(-2)
             if status_code in status_codes.keys():
                 status_codes[status_code] = status_codes[status_code] + 1
-            file_size = file_size + int(matches.group(2))
+            file_size = file_size + int(tokens[-1])
 
             count = count + 1
 
