@@ -40,7 +40,7 @@ try:
             count = 0
 
 except KeyboardInterrupt:
-    print("File Size: {}".format(file_size))
+    print("File size: {}".format(file_size))
     for key, val in status_codes.items():
         if (val > 0):
             print("{}: {}".format(key, val))
