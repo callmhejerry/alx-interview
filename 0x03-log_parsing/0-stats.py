@@ -26,7 +26,7 @@ try:
             for key, val in status_codes.items():
                 if (val > 0):
                     print("{}: {}".format(key, val))
-            count = 1
+            count = 0
         else:
             pattern = r'\b(\d{3})\s(\d+)\b'
             matches = re.search(pattern, user_input)
@@ -43,4 +43,4 @@ except KeyboardInterrupt:
     for key, val in status_codes.items():
         if (val > 0):
             print("{}: {}".format(key, val))
-    count = 1
+    count = 0
