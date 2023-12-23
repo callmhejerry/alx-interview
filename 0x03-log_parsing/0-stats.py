@@ -27,17 +27,17 @@ try:
                 if (val > 0):
                     print("{}: {}".format(key, val))
             count = 1
+        else:
+            pattern = r'\b(\d{3})\s(\d+)\b'
+            matches = re.search(pattern, user_input)
 
-        pattern = r'\b(\d{3})\s(\d+)\b'
-        matches = re.search(pattern, user_input)
+            if matches:
+                status_code = matches.group(1)
 
-        if matches:
-            status_code = matches.group(1)
+                status_codes[status_code] = status_codes[status_code] + 1
+                file_size = file_size + int(matches.group(2))
 
-            status_codes[status_code] = status_codes[status_code] + 1
-            file_size = file_size + int(matches.group(2))
-
-        count = count + 1
+            count = count + 1
 except KeyboardInterrupt:
     print("File Size: {}".format(file_size))
     for key, val in status_codes.items():
