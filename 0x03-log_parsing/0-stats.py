@@ -25,7 +25,7 @@ try:
         matches = len(tokens) > 4
 
         if matches:
-            status_code = tokens(-2)
+            status_code = tokens[-2]
             if status_code in status_codes.keys():
                 status_codes[status_code] = status_codes[status_code] + 1
             file_size = file_size + int(tokens[-1])
