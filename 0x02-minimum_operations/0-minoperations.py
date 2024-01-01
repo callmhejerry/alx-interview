@@ -30,7 +30,7 @@ def get_factors(n):
 
 def minOperations(n):
     """Returns the minimum operations needed to result in exactly n H"""
-    if n <= 1:
+    if n <= 1 or n > 50:
         return 0
 
     factors = get_factors(n)
