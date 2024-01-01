@@ -14,12 +14,14 @@ If n is impossible to achieve, return 0
 
 def minOperations(n):
     """Returns the minimum operations needed to result in exactly n H"""
-    if n <= 1:
-        return 0
-    result = 0
-    for i in range(2, n + 1):
-        while n % i == 0:
-            result += i
-            n = n // i
+    ops = 0
+    div = 2
 
-    return result
+    while n > 1:
+        if n % div == 0:
+            ops += div
+            n = n / div
+        else:
+            div += 1
+
+    return ops

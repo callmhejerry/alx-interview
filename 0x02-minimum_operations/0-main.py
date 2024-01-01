@@ -3,9 +3,10 @@
 Main file for testing
 """
 
-minOperations = __import__('0-minoperations').minOperations
+minOperations = __import__('0-minoperation').minOperations
 
-n = 972
+n = 2147483640
+# n = 972
 print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
 
 n = 12
