@@ -8,30 +8,24 @@ valid utf 8 encoding
 def validUTF8(data):
     """A function that determines if a given data set represents a
     valid UTF-8 encoding."""
-    for char in data:
-        binary_rep = bin(char)[2:]
-        if check_binary(binary_rep) is False:
-            return False
-    return True
+    next_bytes_to_check = 0
+    for single_data in data:
+        binary_rep = bin(single_data)[2:].zfill(8)
+        if next_bytes_to_check == 0:
+            if binary_rep.startswith("0"):
+                continue
+            elif binary_rep.startswith("110"):
+                next_bytes_to_check = 1
+            elif binary_rep.startswith("1110"):
+                next_bytes_to_check = 2
+            elif binary_rep.startswith("11110"):
+                next_bytes_to_check = 3
+            else:
+                return False
+        else:
+            if binary_rep.startswith("10"):
+                next_bytes_to_check -= 1
+            else:
+                return False
 
-
-def check_binary(bin):
-    """check the binary representation"""
-    length_of_str = len(bin)
-
-    if length_of_str >= 0 and length_of_str <= 8:
-        if length_of_str > 7:
-            return False
-    if length_of_str >= 9 and length_of_str <= 16:
-        if length_of_str > 11:
-            return False
-    if length_of_str >= 17 and length_of_str <= 24:
-        if length_of_str > 16:
-            return False
-    if length_of_str >= 25 and length_of_str <= 32:
-        if length_of_str > 21:
-            return False
-    if length_of_str > 32:
-        return False
-
-    return True
+    return next_bytes_to_check == 0

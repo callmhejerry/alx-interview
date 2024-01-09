@@ -3,7 +3,7 @@
 Main file for testing
 """
 
-validUTF8 = __import__('0-validate_utf8').validUTF8
+validUTF8 = __import__('0-validate_utf8s').validUTF8
 
 data = [65]
 print(validUTF8(data))
@@ -15,5 +15,5 @@ data = [229, 65, 127, 256]
 print(validUTF8(data))
 
 
-data = [467, 133, 108]
+data = [128]
 print(validUTF8(data))
