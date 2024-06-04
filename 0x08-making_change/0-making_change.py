@@ -18,21 +18,15 @@ def makeChange(coins, total):
         return -1
 
     coins = sorted(coins, reverse=True)
-    few_number = int(total / coins[0])
-    fn = few_number
-    remain = total - few_number * coins[0]
-    idx = 0
+    results = []
+    count = 0
+    for i in range(len(coins)):
+        while coins[i] <= total:
+            total = total - coins[i]
+            count = count + 1
+            results.append(coins[i])
 
-    for i in range(1, len(coins)):
-        few_number = int(remain / coins[i])
-        idx = i
-        if few_number == 0:
-            pass
-        remain = remain - few_number * coins[i]
-        fn = fn + few_number
-        if remain == 0:
-            return fn
-
-    if remain in coins:
-        return fn + 1
-    return -1
+    if total == 0:
+        return count
+    else:
+        return -1
